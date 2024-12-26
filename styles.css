@@ -1,0 +1,231 @@
+/* Navigation */
+.nav-container {
+    position: fixed;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 180px;
+}
+
+/* Section Headers Scroll Adjustment */
+h2[id] {
+    scroll-margin-top: 2rem;
+    padding-top: 1rem;
+}
+
+/* Center the Welcome text */
+h1 {
+    text-align: center;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    text-align: right;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    padding: 0.3rem 0;
+    display: inline-block;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: #007bff;
+    transform: translateX(-3px);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    right: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* Social Links */
+.social-links a {
+    transition: opacity 0.3s ease;
+    margin: 0 0.5rem;
+}
+
+.social-links a:hover {
+    opacity: 0.7;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #0056b3;
+}
+
+/* Dark Mode */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+body.dark-mode a {
+    color: #66b3ff;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .nav-container {
+        position: sticky;
+        top: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        background: white;
+        padding: 0.5rem 0;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .nav-menu li {
+        text-align: center;
+    }
+
+    .nav-menu a:hover {
+        transform: none;
+    }
+}
+
+/* Adjust main content for the side navigation */
+@media (min-width: 1201px) {
+    body {
+        padding-right: 200px;
+    }
+}
+
+/* Citation Button */
+.citation-btn {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.citation-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Share Buttons */
+.share-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.share-btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.share-btn:hover {
+    opacity: 0.8;
+}
+
+.twitter-share {
+    background: #1DA1F2;
+    color: white;
+}
+
+.linkedin-share {
+    background: #0077B5;
+    color: white;
+}
+
+/* Content Layout */
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    body {
+        padding: 0 1rem;
+    }
+} 

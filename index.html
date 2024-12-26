@@ -5,23 +5,57 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Xin Wan</title>
-    <meta name="description" content="Xin Wan's personal website."/>
-    <meta name="keywords" content="blockchain, economics, mechanism design"/>
+    <meta name="description" content="Xin Wan's personal website - Research Scientist at Uniswap Labs, focusing on blockchain economics and mechanism design"/>
+    <meta name="keywords" content="blockchain, economics, mechanism design, Uniswap, DeFi, research"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Xin Wan - Research Scientist"/>
+    <meta property="og:description" content="Research Scientist at Uniswap Labs, focusing on blockchain economics and mechanism design"/>
+    <meta property="og:image" content="headshot.jpeg"/>
+    <meta property="og:url" content="https://wanxinwanxin.github.io"/>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="https://latex.now.sh/style.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 </head>
 
 <body>
-<h1>Welcome! </h1>
-<p class="author">
-    Xin Wan<br>
-    <a href="https://twitter.com/xin__wan">[Twitter]</a> <a href="https://www.linkedin.com/in/xin-wan-a2220341/">[Linkedin]</a>
-    <a href="https://medium.com/@nflswanxin">[Medium]</a> <a href="https://github.com/wanxinwanxin">[Github]</a><br>
-    Email: nflswanxin (at) gmail (dot) com <br> Last Update: March 1, 2024
-</p>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <ul class="nav-menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#engagement">Engagement</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#talks">Talks</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h1>Welcome! </h1>
+    
+    <!-- Social Links -->
+    <p class="author social-links">
+        Xin Wan<br>
+        <a href="https://twitter.com/xin__wan">[Twitter]</a>
+        <a href="https://www.linkedin.com/in/xin-wan-a2220341/">[Linkedin]</a>
+        <a href="https://medium.com/@nflswanxin">[Medium]</a>
+        <a href="https://github.com/wanxinwanxin">[Github]</a>
+        <a href="projects.html">[Personal Projects]</a><br>
+        Email: nflswanxin (at) gmail (dot) com <br>
+        Last Update: Dec 26, 2024
+    </p>
 
 
 <div class="abstract">
-    <h2>Abstract</h2>
+    <h2 id="about">Abstract</h2>
     <p style="text-align: left; text-indent: 0.5in;">
         I am a Research Scientist at Uniswap Labs.
         My current research interests include empirical economics and protocol &amp; mechanism design.
@@ -41,18 +75,12 @@
 </div>
 <dis class="photo">
 <img src=headshot.jpeg loading="lazy" alt="Xin Wan's photo" width="400"/>
-        
-        
-        <label for="sn-2" class="sidenote-toggle sidenote-number"></label>
-        <input type="checkbox" id="sn-2" class="sidenote-toggle"/>
-
-
 </div>
 
 
 
 <div class="Engagement">
-    <h2>Engagement</h2>
+    <h2 id="engagement">Engagement</h2>
     <p style="text-align:left;">
         
         <p>I am open to:</p>
@@ -61,7 +89,7 @@
                 <li>Advising companies / consulting on projects</li>
                 <li>Guest lecturing / speaking at events</li>
             </ul>
-            <p>Please reach out through email or Twitter DM if you are interested.</p>
+            <p>Please <a href="#contact">reach out</a> if interested.</p>
     </p>
 </div>
 
@@ -69,13 +97,41 @@
 
 <main>
     <article>
-        <h2 id="publications">Research</h2>
+        <h2 id="research">Research</h2>
         <!-- Working Projects -->
 
         <!-- Published -->
         <ul>
             <li>
-                <a href="https://arxiv.org/abs/2309.13648">The Costs of Swapping on the Uniswap Protocol </a><br>
+                <a href="https://docs.unichain.org/whitepaper.pdf">Unichain </a><br>
+                <small> Hayden Adams, Mark Toda, Alex Karys, Xin Wan, Daniel Gretzke, Eric Zhong, Zach Wong, Daniel Marzec, Robert Miller, Hasu, Karl Floersch, Dan Robinson
+                </small>
+            </li>
+            
+            <li>
+                <a href="https://arxiv.org/abs/2410.19106">Quantifying the Value of Revert Protection </a><br>
+                <small><i>Accepted to Financial Cryptography and Data Security Conference 2025</i></small><br>
+                <small> Brian Z. Zhu, Xin Wan, Ciamac C. Moallemi, Dan Robinson, Brad Bachu
+                </small>
+            </li>
+            
+            <li>
+                <a href="https://arxiv.org/abs/2410.19107">What Drives Liquidity on Decentralized Exchanges? Evidence from the Uniswap Protocol </a><br>
+                <small> Brian Z. Zhu, Dingyue Liu, Xin Wan, Gordon Liao, Ciamac C. Moallemi, Brad Bachu
+                </small>
+            </li>
+            
+            <li>
+                <a href="https://arxiv.org/abs/2405.00537">Quantifying Price Improvement in Order Flow Auctions </a><br>
+                <small> Brad Bachu, Xin Wan, Ciamac C. Moallemi
+                </small>
+            </li>
+            
+            
+            
+            
+            <li>
+                <a href="https://arxiv.org/abs/2309.13648">Don't Let MEV Slip: The Costs of Swapping on the Uniswap Protocol </a><br>
                 <small><i>Accepted to Financial Cryptography and Data Security Conference 2024</i></small><br>
                 <small> Austin Adams, Benjamin Y Chan, Sarit Markovich, Xin Wan
                 </small>
@@ -128,16 +184,27 @@
         <ul>
             <li>
                 <a href="https://www.youtube.com/@uniswap-labs/streams">Research Hour Series By Uniswap Labs </a><br>
-                <small>Co-hosting with Austin Adams</small>
             </li>
         </ul>
 
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/watch?v=5TSj_WIY5EU&t=1s">Bell Curve Episode On Order Flow Auctions </a><br>
+            </li>
+        </ul>
+        
 
 
-        <h2 id="selectedtalks">Selected Talks</h2>
+
+        <h2 id="talks">Selected Talks</h2>
         
         <p>2024</p>
         <ul>
+            <li>
+                The Evolution of Uniswap: From v1 to v4 <br>
+                @ DuneCon 2024 <a href="https://www.youtube.com/watch?v=B_V0dpxEFOU">[Youtube video]</a><br>
+            </li>
+            
             <li>
                 The Costs of Swapping on the Uniswap Protocol <br>
                 @ Financial Cryptography and Data Security Conference 2024 <a href="https://www.youtube.com/watch?v=jugpUY56R4A">[Youtube video]</a><br>
@@ -193,7 +260,7 @@
                 <a href="https://www.youtube.com/watch?v=fgh0WQb4mik">[Youtube video]</a>
             </li>
         </ul>
-        <h2 id="experiences">Professional Experiences</h2>
+        <h2 id="experience">Professional Experiences</h2>
 
         <ul>
             <li>
@@ -226,14 +293,30 @@
     </article>
 </main>
 
+    <!-- Contact Form Section -->
+    <div id="contact" class="contact-form">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/xeooaqob" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</button>
+
+    <hr>
+
+    <footer>
+        <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a> and <a href="https://chat.openai.com">ChatGPT</a>
+            &#10084; &#10084;</p>
+        <p>Forked from <a href="https://lzhou1110.github.io/">Liyi Zhou's website</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
-
-<hr>
-
-<footer>
-    <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a> and <a href="https://chat.openai.com">ChatGPT</a>
-        &#10084; &#10084;</p>
-    <p>Forked from <a href="https://lzhou1110.github.io/">Liyi Zhou's website</a> </p>        
-</footer>
 
 </html>
