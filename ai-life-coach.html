@@ -204,8 +204,18 @@
 
             function loadChatHistory() {
                 const savedHistory = localStorage.getItem('aiCoach_history');
-                if (savedHistory) {
-                    chatHistory.messages = JSON.parse(savedHistory);
+                const savedUserName = localStorage.getItem('aiCoach_userName');
+                const savedLastVisit = localStorage.getItem('aiCoach_lastVisit');
+
+                // Initialize chat history object with saved values
+                chatHistory = {
+                    messages: savedHistory ? JSON.parse(savedHistory) : [],
+                    userName: savedUserName,
+                    lastVisit: savedLastVisit
+                };
+
+                // Display saved messages
+                if (chatHistory.messages.length > 0) {
                     chatHistory.messages.forEach(msg => {
                         displayMessage(msg.content, msg.role === 'user', msg.timestamp);
                     });
