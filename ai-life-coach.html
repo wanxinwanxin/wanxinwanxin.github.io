@@ -288,9 +288,25 @@
 
             clearHistoryBtn.addEventListener('click', () => {
                 if (confirm('Are you sure you want to clear your chat history? This cannot be undone.')) {
+                    // Clear all stored data
                     localStorage.removeItem('aiCoach_history');
-                    chatHistory.messages = [];
+                    localStorage.removeItem('aiCoach_userName');
+                    localStorage.removeItem('aiCoach_lastVisit');
+                    
+                    // Reset chat history object
+                    chatHistory = {
+                        messages: [],
+                        userName: null,
+                        lastVisit: null
+                    };
+                    
+                    // Clear displayed messages
                     chatMessages.innerHTML = '';
+                    
+                    // Reset user status
+                    updateUserStatus();
+                    
+                    // Add initial message
                     const initialMessage = "Hello! I'm your AI Life Coach. How can I help you today with your personal development journey?";
                     addMessage(initialMessage, false);
                 }
