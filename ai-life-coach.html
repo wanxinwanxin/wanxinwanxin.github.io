@@ -96,6 +96,47 @@
             color: #666;
             margin-top: 5px;
         }
+
+        /* Add tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
     </style>
 </head>
 
@@ -105,28 +146,16 @@
 
     <div class="content">
         <p>Welcome to your personal AI Life Coach! I'm here to help you with personal development, goal setting, and navigating life's challenges. Start a conversation below to begin your journey.</p>
-        <p><a href="#" id="privacyLink">[How is my privacy respected?]</a></p>
-        <div id="privacyInfo" style="display: none; max-width: 800px; margin: 20px auto; padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
-            <h3>Privacy Implementation</h3>
-            <ul>
-                <li><strong>Local Storage Only:</strong> All your chat history and personal information (including your name) are stored exclusively in your browser's local storage. This means your data never leaves your device except when you're actively chatting.</li>
-                <li><strong>No External Tracking:</strong> We don't use cookies or any external tracking mechanisms. Your conversations are private to you.</li>
-                <li><strong>Data Control:</strong> You have full control over your data:
-                    <ul>
-                        <li>Use the "Clear History" button to completely remove all stored data</li>
-                        <li>Use the "Export Chat" button to download your chat history</li>
-                        <li>Your data persists until you:
-                            <ul>
-                                <li>Clear your browser history/data</li>
-                                <li>Use private/incognito browsing</li>
-                                <li>Manually clear the chat history</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><strong>Chat API:</strong> When you send a message, only that message and relevant context are sent to the AI service to generate a response. No personal identification is included.</li>
-            </ul>
-        </div>
+        <p class="tooltip">
+            <a href="ai-coach-privacy.html">[How is my privacy respected?]</a>
+            <span class="tooltip-text">
+                • All data stored locally in your browser<br>
+                • No external tracking or cookies<br>
+                • Full control over your data with clear/export options<br>
+                • Secure, encrypted communication<br>
+                Click for full privacy details →
+            </span>
+        </p>
 
         <div class="user-controls">
             <span id="userStatus"></span>
