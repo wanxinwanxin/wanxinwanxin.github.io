@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>AI Life Coach - Xin Wan</title>
+    <meta name="description" content="Personal AI-powered Life Coach"/>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 20px auto;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 70%;
+        }
+
+        .message.user {
+            margin-left: auto;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 0 15px;
+        }
+
+        .message.assistant {
+            margin-right: auto;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .chat-input {
+            padding: 20px;
+            background-color: white;
+            border-top: 1px solid #ccc;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .chat-input button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AI Life Coach</h1>
+    <p><a href="index.html">[Back to Main Page]</a> <a href="projects.html">[Back to Projects]</a></p>
+
+    <div class="content">
+        <p>Welcome to your personal AI Life Coach! I'm here to help you with personal development, goal setting, and navigating life's challenges. Start a conversation below to begin your journey.</p>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message assistant">
+                    Hello! I'm your AI Life Coach. How can I help you today with your personal development journey?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type your message here..." />
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageInput = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                ? 'http://localhost:3001'
+                : 'https://ai-coach-api-bzpi.onrender.com';
+            let chatHistory = {
+                messages: [{
+                    role: 'assistant',
+                    content: 'Hello! I\'m your AI Life Coach. How can I help you today with your personal development journey?',
+                    timestamp: Date.now()
+                }]
+            };
+
+            function addMessage(content, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
+                messageDiv.textContent = content;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Update chat history
+                chatHistory.messages.push({
+                    role: isUser ? 'user' : 'assistant',
+                    content: content,
+                    timestamp: Date.now()
+                });
+            }
+
+            async function handleSendMessage() {
+                const message = messageInput.value.trim();
+                if (!message) return;
+
+                // Disable input while processing
+                messageInput.disabled = true;
+                sendButton.disabled = true;
+
+                // Add user message to chat
+                addMessage(message, true);
+                messageInput.value = '';
+
+                try {
+                    const response = await fetch(`${API_URL}/api/chat`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: message,
+                            history: chatHistory
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'API request failed');
+                    }
+
+                    const data = await response.json();
+                    addMessage(data.content);
+                } catch (error) {
+                    console.error('Error:', error);
+                    addMessage(`Error: ${error.message}`);
+                } finally {
+                    // Re-enable input
+                    messageInput.disabled = false;
+                    sendButton.disabled = false;
+                    messageInput.focus();
+                }
+            }
+
+            // Event listeners
+            sendButton.addEventListener('click', handleSendMessage);
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleSendMessage();
+            });
+        });
+    </script>
+</body>
+</html> 
