@@ -73,6 +73,29 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+
+        .user-controls {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-controls button {
+            padding: 5px 10px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .timestamp {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -82,12 +105,39 @@
 
     <div class="content">
         <p>Welcome to your personal AI Life Coach! I'm here to help you with personal development, goal setting, and navigating life's challenges. Start a conversation below to begin your journey.</p>
+        <p><a href="#" id="privacyLink">[How is my privacy respected?]</a></p>
+        <div id="privacyInfo" style="display: none; max-width: 800px; margin: 20px auto; padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
+            <h3>Privacy Implementation</h3>
+            <ul>
+                <li><strong>Local Storage Only:</strong> All your chat history and personal information (including your name) are stored exclusively in your browser's local storage. This means your data never leaves your device except when you're actively chatting.</li>
+                <li><strong>No External Tracking:</strong> We don't use cookies or any external tracking mechanisms. Your conversations are private to you.</li>
+                <li><strong>Data Control:</strong> You have full control over your data:
+                    <ul>
+                        <li>Use the "Clear History" button to completely remove all stored data</li>
+                        <li>Use the "Export Chat" button to download your chat history</li>
+                        <li>Your data persists until you:
+                            <ul>
+                                <li>Clear your browser history/data</li>
+                                <li>Use private/incognito browsing</li>
+                                <li>Manually clear the chat history</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Chat API:</strong> When you send a message, only that message and relevant context are sent to the AI service to generate a response. No personal identification is included.</li>
+            </ul>
+        </div>
+
+        <div class="user-controls">
+            <span id="userStatus"></span>
+            <div>
+                <button id="clearHistory">Clear History</button>
+                <button id="exportChat">Export Chat</button>
+            </div>
+        </div>
 
         <div class="chat-container">
             <div class="chat-messages" id="chatMessages">
-                <div class="message assistant">
-                    Hello! I'm your AI Life Coach. How can I help you today with your personal development journey?
-                </div>
             </div>
             <div class="chat-input">
                 <input type="text" id="messageInput" placeholder="Type your message here..." />
@@ -107,30 +157,91 @@
             const chatMessages = document.getElementById('chatMessages');
             const messageInput = document.getElementById('messageInput');
             const sendButton = document.getElementById('sendButton');
+            const clearHistoryBtn = document.getElementById('clearHistory');
+            const exportChatBtn = document.getElementById('exportChat');
+            const userStatus = document.getElementById('userStatus');
+            
             const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
                 ? 'http://localhost:3001'
                 : 'https://ai-coach-api-bzpi.onrender.com';
+
+            // Initialize chat history from localStorage or with default message
             let chatHistory = {
-                messages: [{
-                    role: 'assistant',
-                    content: 'Hello! I\'m your AI Life Coach. How can I help you today with your personal development journey?',
-                    timestamp: Date.now()
-                }]
+                messages: [],
+                userName: localStorage.getItem('aiCoach_userName') || null,
+                lastVisit: localStorage.getItem('aiCoach_lastVisit') || null
             };
 
-            function addMessage(content, isUser = false) {
+            function loadChatHistory() {
+                const savedHistory = localStorage.getItem('aiCoach_history');
+                if (savedHistory) {
+                    chatHistory.messages = JSON.parse(savedHistory);
+                    chatHistory.messages.forEach(msg => {
+                        displayMessage(msg.content, msg.role === 'user', msg.timestamp);
+                    });
+                } else {
+                    // Initial message for new users
+                    const initialMessage = "Hello! I'm your AI Life Coach. How can I help you today with your personal development journey?";
+                    addMessage(initialMessage, false);
+                }
+
+                updateUserStatus();
+            }
+
+            function updateUserStatus() {
+                if (chatHistory.userName) {
+                    userStatus.textContent = `Welcome back, ${chatHistory.userName}!`;
+                    if (chatHistory.lastVisit) {
+                        const lastVisit = new Date(parseInt(chatHistory.lastVisit));
+                        userStatus.textContent += ` Last visit: ${lastVisit.toLocaleDateString()}`;
+                    }
+                } else {
+                    userStatus.textContent = 'Welcome! Feel free to share your name during our conversation.';
+                }
+            }
+
+            function displayMessage(content, isUser, timestamp) {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
                 messageDiv.textContent = content;
+
+                if (timestamp) {
+                    const timeDiv = document.createElement('div');
+                    timeDiv.className = 'timestamp';
+                    timeDiv.textContent = new Date(timestamp).toLocaleString();
+                    messageDiv.appendChild(timeDiv);
+                }
+
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function addMessage(content, isUser = false) {
+                const timestamp = Date.now();
+                displayMessage(content, isUser, timestamp);
 
                 // Update chat history
                 chatHistory.messages.push({
                     role: isUser ? 'user' : 'assistant',
                     content: content,
-                    timestamp: Date.now()
+                    timestamp: timestamp
                 });
+
+                // Save to localStorage
+                localStorage.setItem('aiCoach_history', JSON.stringify(chatHistory.messages));
+                localStorage.setItem('aiCoach_lastVisit', timestamp);
+
+                // Check for name in user messages
+                if (isUser) {
+                    const nameMention = content.match(/my name is ([A-Za-z]+)/i) || 
+                                      content.match(/I'm ([A-Za-z]+)/i) ||
+                                      content.match(/I am ([A-Za-z]+)/i);
+                    if (nameMention && !chatHistory.userName) {
+                        chatHistory.userName = nameMention[1];
+                        localStorage.setItem('aiCoach_userName', chatHistory.userName);
+                        updateUserStatus();
+                    }
+                }
             }
 
             async function handleSendMessage() {
@@ -175,10 +286,47 @@
                 }
             }
 
+            clearHistoryBtn.addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear your chat history? This cannot be undone.')) {
+                    localStorage.removeItem('aiCoach_history');
+                    chatHistory.messages = [];
+                    chatMessages.innerHTML = '';
+                    const initialMessage = "Hello! I'm your AI Life Coach. How can I help you today with your personal development journey?";
+                    addMessage(initialMessage, false);
+                }
+            });
+
+            exportChatBtn.addEventListener('click', () => {
+                const exportData = {
+                    messages: chatHistory.messages,
+                    userName: chatHistory.userName,
+                    exportDate: new Date().toISOString()
+                };
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ai-coach-chat-history.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
             // Event listeners
             sendButton.addEventListener('click', handleSendMessage);
             messageInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') handleSendMessage();
+            });
+
+            // Load chat history on startup
+            loadChatHistory();
+
+            // Privacy link toggle
+            document.getElementById('privacyLink').addEventListener('click', (e) => {
+                e.preventDefault();
+                const privacyInfo = document.getElementById('privacyInfo');
+                privacyInfo.style.display = privacyInfo.style.display === 'none' ? 'block' : 'none';
             });
         });
     </script>
