@@ -148,30 +148,39 @@
 
         .button {
             padding: 0.75rem 1.5rem;
-            border: none;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            background-color: white;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .button:hover {
+            background-color: #f8fafc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .button-primary {
             background-color: #3b82f6;
             color: white;
+            border-color: #3b82f6;
         }
 
         .button-primary:hover {
             background-color: #2563eb;
+            border-color: #2563eb;
         }
 
-        .button-secondary {
-            background-color: #e2e8f0;
-            color: #4a5568;
-        }
-
-        .button-secondary:hover {
-            background-color: #cbd5e1;
+        .button img {
+            height: 18px;
         }
 
         .controls {
@@ -179,6 +188,7 @@
             justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
         .google-button {
@@ -280,23 +290,28 @@
         </p>
 
         <div class="controls">
-            <button id="clearHistory" class="button button-secondary">Clear History</button>
-            <button id="exportChat" class="button button-secondary">Export Chat</button>
-            <button id="syncDrive" class="google-button">
+            <button id="clearHistory" class="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                </svg>
+                Clear History
+            </button>
+            <button id="exportChat" class="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                Export Chat
+            </button>
+            <button id="syncDrive" class="button">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G">
                 Sync with Drive
             </button>
-            <div class="tooltip">
-                <a href="ai-coach-privacy.html" class="button button-secondary">Privacy Info</a>
-                <span class="tooltip-text">
-                    • Chat data stored locally in your browser<br>
-                    • Basic analytics for service improvement<br>
-                    • Full control over your data with clear/export options<br>
-                    • Secure, encrypted communication<br>
-                    • No marketing or advertising tracking<br>
-                    Click for full privacy details →
-                </span>
-            </div>
+            <a href="ai-coach-privacy.html" class="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Privacy Info
+            </a>
         </div>
 
         <div class="chat-container">
