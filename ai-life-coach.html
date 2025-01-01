@@ -4,102 +4,207 @@
     <meta charset="UTF-8"/>
     <title>AI Life Coach - Xin Wan</title>
     <meta name="description" content="Personal AI-powered Life Coach"/>
-    <link rel="stylesheet" href="https://latex.now.sh/style.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://accounts.google.com/gsi/client"></script>
     <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links {
+            margin-bottom: 2rem;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #edf2f7;
+        }
+
+        .welcome-message {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .chat-container {
-            max-width: 800px;
-            margin: 20px auto;
-            height: 500px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 600px;
             display: flex;
             flex-direction: column;
+        }
+
+        .chat-header {
+            background: #f8fafc;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #userStatus {
+            color: #4a5568;
+            font-weight: 500;
         }
 
         .chat-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 1.5rem;
+            background-color: #ffffff;
         }
 
         .message {
-            margin-bottom: 15px;
-            max-width: 70%;
+            margin-bottom: 1rem;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .message.user {
             margin-left: auto;
-            background-color: #007bff;
+            background-color: #3b82f6;
             color: white;
-            padding: 10px 15px;
-            border-radius: 15px 15px 0 15px;
+            padding: 1rem;
+            border-radius: 16px 16px 4px 16px;
         }
 
         .message.assistant {
             margin-right: auto;
-            background-color: white;
-            padding: 10px 15px;
-            border-radius: 15px 15px 15px 0;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 1rem;
+            border-radius: 16px 16px 16px 4px;
+        }
+
+        .timestamp {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
         }
 
         .chat-input {
-            padding: 20px;
-            background-color: white;
-            border-top: 1px solid #ccc;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
             display: flex;
-            gap: 10px;
+            gap: 1rem;
         }
 
         .chat-input input {
             flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .chat-input button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+        .chat-input input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .chat-input button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+        .button-primary {
+            background-color: #3b82f6;
+            color: white;
         }
 
-        .user-controls {
-            max-width: 800px;
-            margin: 20px auto;
+        .button-primary:hover {
+            background-color: #2563eb;
+        }
+
+        .button-secondary {
+            background-color: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .button-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        .controls {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .google-button {
+            background-color: #ffffff;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+            display: flex;
             align-items: center;
-        }
-
-        .user-controls button {
-            padding: 5px 10px;
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            border-radius: 4px;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .timestamp {
-            font-size: 0.8em;
-            color: #666;
-            margin-top: 5px;
+        .google-button:hover {
+            background-color: #f8fafc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Add tooltip styles */
+        .google-button img {
+            height: 18px;
+        }
+
         .tooltip {
             position: relative;
             display: inline-block;
@@ -108,20 +213,21 @@
         .tooltip .tooltip-text {
             visibility: hidden;
             width: 300px;
-            background-color: #555;
-            color: #fff;
+            background-color: #1e293b;
+            color: white;
             text-align: left;
-            border-radius: 6px;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 1rem;
             position: absolute;
             z-index: 1;
             bottom: 125%;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.9em;
-            line-height: 1.4;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .tooltip:hover .tooltip-text {
@@ -134,59 +240,79 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
+            margin-left: -8px;
+            border-width: 8px;
             border-style: solid;
-            border-color: #555 transparent transparent transparent;
+            border-color: #1e293b transparent transparent transparent;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <h1>AI Life Coach</h1>
-    <p><a href="index.html">[Back to Main Page]</a> <a href="projects.html">[Back to Projects]</a></p>
+    <div class="container">
+        <div class="header">
+            <h1>AI Life Coach</h1>
+            <div class="nav-links">
+                <a href="index.html">← Back to Main Page</a>
+                <a href="projects.html">← Back to Projects</a>
+            </div>
+        </div>
 
-    <div class="content">
-        <p>Welcome to your personal AI Life Coach! I'm here to help you with personal development, goal setting, and navigating life's challenges. Start a conversation below to begin your journey.</p>
-        <p class="tooltip">
-            <a href="ai-coach-privacy.html">[How is my privacy respected?]</a>
-            <span class="tooltip-text">
-                • Chat data stored locally in your browser<br>
-                • Basic analytics for service improvement<br>
-                • Full control over your data with clear/export options<br>
-                • Secure, encrypted communication<br>
-                • No marketing or advertising tracking<br>
-                Click for full privacy details →
-            </span>
+        <p class="welcome-message">
+            Welcome to your personal AI Life Coach! I'm here to help you with personal development, 
+            goal setting, and navigating life's challenges. Start a conversation below to begin your journey.
         </p>
 
-        <div class="user-controls">
-            <span id="userStatus"></span>
-            <div>
-                <button id="clearHistory">Clear History</button>
-                <button id="exportChat">Export Chat</button>
-                <button id="syncDrive" style="background-color: #4285f4;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
-                         alt="G" style="height: 18px; vertical-align: middle; margin-right: 5px;">
-                    Sync with Drive
-                </button>
+        <div class="controls">
+            <button id="clearHistory" class="button button-secondary">Clear History</button>
+            <button id="exportChat" class="button button-secondary">Export Chat</button>
+            <button id="syncDrive" class="google-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G">
+                Sync with Drive
+            </button>
+            <div class="tooltip">
+                <a href="ai-coach-privacy.html" class="button button-secondary">Privacy Info</a>
+                <span class="tooltip-text">
+                    • Chat data stored locally in your browser<br>
+                    • Basic analytics for service improvement<br>
+                    • Full control over your data with clear/export options<br>
+                    • Secure, encrypted communication<br>
+                    • No marketing or advertising tracking<br>
+                    Click for full privacy details →
+                </span>
             </div>
         </div>
 
         <div class="chat-container">
-            <div class="chat-messages" id="chatMessages">
+            <div class="chat-header">
+                <span id="userStatus"></span>
             </div>
+            <div class="chat-messages" id="chatMessages"></div>
             <div class="chat-input">
                 <input type="text" id="messageInput" placeholder="Type your message here..." />
-                <button id="sendButton">Send</button>
+                <button id="sendButton" class="button button-primary">Send</button>
             </div>
         </div>
     </div>
 
-    <hr>
-
     <footer>
-        <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a></p>
+        <p>Made with ❤️ using <a href="https://latex.vercel.app">LaTeX.css</a></p>
     </footer>
 
     <script>
@@ -217,9 +343,12 @@
                 // Initialize chat history object with saved values
                 chatHistory = {
                     messages: savedHistory ? JSON.parse(savedHistory) : [],
-                    userName: savedUserName,
-                    lastVisit: savedLastVisit
+                    userName: savedUserName || null,
+                    lastVisit: savedLastVisit || null
                 };
+
+                // Update user status immediately
+                updateUserStatus();
 
                 // Display saved messages
                 if (chatHistory.messages.length > 0) {
@@ -231,8 +360,6 @@
                     const initialMessage = "Hello! I'm your AI Life Coach. How can I help you today with your personal development journey?";
                     addMessage(initialMessage, false);
                 }
-
-                updateUserStatus();
             }
 
             function updateUserStatus() {
