@@ -4,25 +4,158 @@
     <meta charset="UTF-8"/>
     <title>Personal Projects - Xin Wan</title>
     <meta name="description" content="Xin Wan's personal projects"/>
-    <link rel="stylesheet" href="https://latex.now.sh/style.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            min-height: 100vh;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links {
+            margin-bottom: 2rem;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #edf2f7;
+        }
+
+        .projects {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .project h2 {
+            color: #2d3748;
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .project p {
+            color: #4a5568;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .project a {
+            display: inline-flex;
+            align-items: center;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            gap: 0.5rem;
+        }
+
+        .project a:hover {
+            color: #2563eb;
+        }
+
+        .project a svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .project a:hover svg {
+            transform: translateX(4px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Personal Projects</h1>
-    <p><a href="index.html">[Back to Main Page]</a></p>
+    <div class="container">
+        <div class="header">
+            <h1>Personal Projects</h1>
+            <div class="nav-links">
+                <a href="index.html">← Back to Main Page</a>
+            </div>
+        </div>
 
-    <div class="content">
-        <ul>
-            <li><a href="racket-science.html">Racket Science</a> - Badminton and Tennis Services in Flushing, NY</li>
-            <li><a href="ai-life-coach.html">AI Life Coach</a> - Personal AI-powered Life Coach and Development Guide</li>
-        </ul>
+        <div class="projects">
+            <div class="project">
+                <h2>AI Life Coach</h2>
+                <p>A personal AI-powered life coach that helps with personal development, goal setting, and navigating life's challenges. Features include chat persistence, Google Drive sync, and privacy-focused design.</p>
+                <a href="https://ai-coach-frontend.onrender.com">
+                    Try it out
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="project">
+                <h2>Racket Science</h2>
+                <p>Professional badminton and tennis services in Flushing, NY. Offering coaching, equipment recommendations, and court reservations for players of all skill levels.</p>
+                <a href="racket-science.html">
+                    Learn more
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <hr>
-
     <footer>
-        <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a></p>
+        <p>Made with ❤️ by <a href="https://wanxinwanxin.github.io">Xin Wan</a></p>
     </footer>
 </body>
 </html> 
