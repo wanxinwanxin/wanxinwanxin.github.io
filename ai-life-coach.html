@@ -6,6 +6,8 @@
     <meta name="description" content="Personal AI-powered Life Coach"/>
     <link rel="stylesheet" href="https://latex.now.sh/style.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
     <style>
         .chat-container {
             max-width: 800px;
@@ -163,6 +165,11 @@
             <div>
                 <button id="clearHistory">Clear History</button>
                 <button id="exportChat">Export Chat</button>
+                <button id="syncDrive" style="background-color: #4285f4;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
+                         alt="G" style="height: 18px; vertical-align: middle; margin-right: 5px;">
+                    Sync with Drive
+                </button>
             </div>
         </div>
 
@@ -384,6 +391,134 @@
                 const privacyInfo = document.getElementById('privacyInfo');
                 privacyInfo.style.display = privacyInfo.style.display === 'none' ? 'block' : 'none';
             });
+
+            // Google Drive Integration
+            const config = {
+                CLIENT_ID: '', // Load from API
+                API_KEY: '',   // Load from API
+                DISCOVERY_DOC: 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest',
+                SCOPES: 'https://www.googleapis.com/auth/drive.appdata'
+            };
+
+            // Load config from backend API
+            async function loadConfig() {
+                try {
+                    const response = await fetch(`${API_URL}/api/config`);
+                    if (!response.ok) {
+                        throw new Error('Failed to load Google Drive configuration');
+                    }
+                    const data = await response.json();
+                    config.CLIENT_ID = data.CLIENT_ID;
+                    config.API_KEY = data.API_KEY;
+                    // Initialize Google API after config is loaded
+                    gapiLoaded();
+                    gisLoaded();
+                } catch (err) {
+                    console.error('Error loading config:', err);
+                    syncDriveBtn.style.display = 'none';
+                }
+            }
+            
+            let tokenClient;
+            let gapiInited = false;
+            let gisInited = false;
+            const syncDriveBtn = document.getElementById('syncDrive');
+
+            function gapiLoaded() {
+                gapi.load('client', initializeGapiClient);
+            }
+
+            async function initializeGapiClient() {
+                await gapi.client.init({
+                    apiKey: config.API_KEY,
+                    discoveryDocs: [config.DISCOVERY_DOC],
+                });
+                gapiInited = true;
+                maybeEnableSyncButton();
+            }
+
+            function gisLoaded() {
+                tokenClient = google.accounts.oauth2.initTokenClient({
+                    client_id: config.CLIENT_ID,
+                    scope: config.SCOPES,
+                    callback: '', // defined later
+                });
+                gisInited = true;
+                maybeEnableSyncButton();
+            }
+
+            function maybeEnableSyncButton() {
+                if (gapiInited && gisInited) {
+                    syncDriveBtn.style.display = 'inline-block';
+                }
+            }
+
+            async function handleAuthClick() {
+                tokenClient.callback = async (resp) => {
+                    if (resp.error !== undefined) {
+                        throw (resp);
+                    }
+                    await syncWithDrive();
+                };
+
+                if (gapi.client.getToken() === null) {
+                    tokenClient.requestAccessToken({ prompt: 'consent' });
+                } else {
+                    tokenClient.requestAccessToken({ prompt: '' });
+                }
+            }
+
+            async function syncWithDrive() {
+                try {
+                    // Prepare data for sync
+                    const syncData = {
+                        messages: chatHistory.messages,
+                        userName: chatHistory.userName,
+                        lastSync: new Date().toISOString()
+                    };
+
+                    // Check for existing file
+                    let fileId = localStorage.getItem('aiCoach_driveFileId');
+                    
+                    if (fileId) {
+                        // Update existing file
+                        await gapi.client.drive.files.update({
+                            fileId: fileId,
+                            media: {
+                                mimeType: 'application/json',
+                                body: JSON.stringify(syncData)
+                            }
+                        });
+                    } else {
+                        // Create new file
+                        const file = await gapi.client.drive.files.create({
+                            resource: {
+                                name: 'ai_coach_data.json',
+                                parents: ['appDataFolder']
+                            },
+                            media: {
+                                mimeType: 'application/json',
+                                body: JSON.stringify(syncData)
+                            },
+                            fields: 'id'
+                        });
+                        
+                        fileId = file.result.id;
+                        localStorage.setItem('aiCoach_driveFileId', fileId);
+                    }
+                    
+                    addMessage("Chat history synced to Google Drive successfully!", false);
+                } catch (err) {
+                    console.error('Error syncing with Drive:', err);
+                    addMessage("Error syncing with Google Drive: " + err.message, false);
+                }
+            }
+
+            // Add click handler for sync button
+            syncDriveBtn.addEventListener('click', handleAuthClick);
+
+            // Load config instead of directly loading Google API
+            loadConfig();
         });
     </script>
 </body>
