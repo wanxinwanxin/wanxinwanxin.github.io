@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Effective Hourly Wage Calculator - Xin Wan</title>
+    <meta name="description" content="Calculate the economic value of any activity using research-backed health economics and AI-powered analysis"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            min-height: 100vh;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links {
+            margin-bottom: 2rem;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #edf2f7;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .result-card.show {
+            display: block;
+        }
+
+        .ehw-result {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .ehw-positive {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .ehw-negative {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .ehw-neutral {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            color: white;
+        }
+
+        .explanation {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .processing-log {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.9rem;
+        }
+
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .example-button {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: auto;
+        }
+
+        .example-button:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .examples {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Effective Hourly Wage Calculator</h1>
+            <div class="nav-links">
+                <a href="index.html">← Back to Main Page</a>
+                <a href="projects.html">All Projects</a>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>🎯 What This Does</h2>
+            <p>Calculate the economic value of any activity using research-backed health economics, life extension valuations, and AI-powered analysis. Built with proper economic principles and peer-reviewed research.</p>
+            
+            <h2>🧮 How It Works</h2>
+            <p><strong>Exercise:</strong> Uses $11M Value of Statistical Life standard and proper amortization over lifetime exercise hours needed</p>
+            <p><strong>Learning:</strong> Estimates future earning potential from skill development using human capital theory</p>
+            <p><strong>Social Media:</strong> Quantifies productivity costs and mental health impacts</p>
+            <p><strong>Any Activity:</strong> AI classification with research-backed economic models</p>
+        </div>
+
+        <div class="calculator-card">
+            <form id="ehwForm">
+                <div class="form-group">
+                    <label for="age">Age (optional)</label>
+                    <input type="number" id="age" name="age" min="18" max="100" placeholder="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="hourly_wage">Current Hourly Wage (optional)</label>
+                    <input type="number" id="hourly_wage" name="hourly_wage" min="0" step="0.01" placeholder="50.00">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location (optional)</label>
+                    <input type="text" id="location" name="location" placeholder="New York, NY">
+                </div>
+
+                <div class="form-group">
+                    <label for="activity">Activity Description</label>
+                    <textarea id="activity" name="activity" rows="3" placeholder="Describe what you did..." required></textarea>
+                </div>
+
+                <div class="examples">
+                    <button type="button" class="example-button" onclick="fillExample('went for a 30-minute run')">🏃‍♂️ Exercise</button>
+                    <button type="button" class="example-button" onclick="fillExample('scrolled social media')">📱 Social Media</button>
+                    <button type="button" class="example-button" onclick="fillExample('learned Python programming')">📚 Learning</button>
+                    <button type="button" class="example-button" onclick="fillExample('meditated for 20 minutes')">🧘‍♀️ Meditation</button>
+                </div>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                    <button type="submit" id="calculateBtn">Calculate EHW</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="results" class="result-card">
+            <div id="loading" class="loading" style="display: none;">
+                <p>🧮 Calculating your effective hourly wage...</p>
+            </div>
+
+            <div id="result-content" style="display: none;">
+                <div id="ehw-display" class="ehw-result"></div>
+                <div id="explanation" class="explanation"></div>
+                <div id="processing-log" class="processing-log"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://wanxinwanxin.github.io">Xin Wan</a> | 
+           <a href="https://github.com/wanxinwanxin/effective-wage-calculator" target="_blank">Open Source</a> | 
+           Built with research-backed economics</p>
+    </footer>
+
+    <script>
+        // Configuration - will be updated after deployment
+        const API_BASE = window.location.hostname === 'localhost' ? 
+            'http://localhost:8000' : 
+            'https://effective-wage-calculator-production.up.railway.app'; // Update after deployment
+
+        function fillExample(activity) {
+            document.getElementById('activity').value = activity;
+        }
+
+        async function calculateEHW() {
+            const form = document.getElementById('ehwForm');
+            const formData = new FormData(form);
+            
+            const requestData = {
+                user_profile: {
+                    age: formData.get('age') ? parseInt(formData.get('age')) : null,
+                    current_hourly_wage: formData.get('hourly_wage') ? parseFloat(formData.get('hourly_wage')) : null,
+                    location: formData.get('location') || null
+                },
+                activity_description: formData.get('activity'),
+                duration_hours: 1.0
+            };
+
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('result-content').style.display = 'none';
+                document.getElementById('results').classList.add('show');
+
+                const response = await fetch(`${API_BASE}/calculate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                displayResults(result);
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('result-content').innerHTML = `
+                    <div class="ehw-result ehw-negative">
+                        ❌ Error calculating EHW
+                    </div>
+                    <div class="explanation">
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Please try again or check if the backend service is running.</p>
+                    </div>
+                `;
+                document.getElementById('result-content').style.display = 'block';
+            }
+        }
+
+        function displayResults(result) {
+            document.getElementById('loading').style.display = 'none';
+            
+            const ehw = result.effective_hourly_wage;
+            const ehwDisplay = document.getElementById('ehw-display');
+            
+            // Color code based on value
+            let className = 'ehw-neutral';
+            let emoji = '⚖️';
+            if (ehw > 10) {
+                className = 'ehw-positive';
+                emoji = '💰';
+            } else if (ehw < -10) {
+                className = 'ehw-negative';
+                emoji = '⚠️';
+            }
+            
+            ehwDisplay.className = `ehw-result ${className}`;
+            ehwDisplay.innerHTML = `${emoji} $${ehw}/hour<br><small>${result.activity_type}</small>`;
+            
+            // Display explanation
+            document.getElementById('explanation').innerHTML = `
+                <h3>💡 Economic Analysis</h3>
+                ${result.explanation.replace(/\n/g, '<br>')}
+                <p><small><strong>Confidence:</strong> ${result.confidence_level}</small></p>
+            `;
+            
+            // Display processing log
+            if (result.processing_log && result.processing_log.length > 0) {
+                document.getElementById('processing-log').innerHTML = `
+                    <h4>🔍 Calculation Steps</h4>
+                    ${result.processing_log.map(step => `<div>${step}</div>`).join('')}
+                `;
+            }
+            
+            document.getElementById('result-content').style.display = 'block';
+        }
+
+        // Form submission
+        document.getElementById('ehwForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateEHW();
+        });
+
+        // Button state management
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            this.disabled = true;
+            this.textContent = 'Calculating...';
+            setTimeout(() => {
+                this.disabled = false;
+                this.textContent = 'Calculate EHW';
+            }, 5000);
+        });
+    </script>
+</body>
+</html> 
