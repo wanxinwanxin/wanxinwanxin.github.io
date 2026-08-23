@@ -1,193 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8"/>
-    <title>Personal Projects - Xin Wan</title>
-    <meta name="description" content="Xin Wan's personal projects"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-            min-height: 100vh;
-            color: #2d3748;
-        }
+    <title>Projects — Xin Wan</title>
+    <meta name="description" content="Apps, games, and research tooling built by Xin Wan — live, open source, and usable today."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6086b'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3Exw%3C/text%3E%3C/svg%3E"/>
 
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+    <!-- Set theme before first paint -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
 
-        h1 {
-            font-size: 2.5rem;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-links {
-            margin-bottom: 2rem;
-        }
-
-        .nav-links a {
-            color: #4a5568;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background-color: #edf2f7;
-        }
-
-        .projects {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .project {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .project h2 {
-            color: #2d3748;
-            margin: 0 0 1rem 0;
-            font-size: 1.5rem;
-        }
-
-        .project p {
-            color: #4a5568;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .project a {
-            display: inline-flex;
-            align-items: center;
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 500;
-            gap: 0.5rem;
-        }
-
-        .project a:hover {
-            color: #2563eb;
-        }
-
-        .project a svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s ease;
-        }
-
-        .project a:hover svg {
-            transform: translateX(4px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        footer a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Personal Projects</h1>
-            <div class="nav-links">
-                <a href="index.html">← Back to Main Page</a>
-            </div>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="wordmark" href="index.html">Xin Wan</a>
+            <nav class="topnav" aria-label="Sections">
+                <a href="index.html#about">About</a>
+                <a href="index.html#research">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="index.html#contact">Contact</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+
+        <div class="page-hero">
+            <p class="hero-eyebrow">Shipped · Open Source · Usable Today</p>
+            <h1>Projects</h1>
+            <p>Things I build outside of work — mostly vibe-coded with AI agents, all real.
+               Everything marked <strong>live</strong> launches right now; everything with a
+               source link is yours to fork.</p>
         </div>
 
-        <div class="projects">
-            <div class="project">
-                <h2>Mind Reader</h2>
-                <p>A lightweight game to demonstrate the power of reinforcement learning. <a href="https://github.com/wanxinwanxin/mind-reader" target="_blank">View the source code on GitHub</a>.</p>
-                <a href="https://mind-reader-production.up.railway.app" target="_blank">
-                    Play Now
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
+        <!-- Live apps -->
+        <section>
+            <p class="eyebrow">Storefront</p>
+            <h2 id="live">Live Apps</h2>
+            <div class="card-grid">
 
-            <div class="project">
-                <h2>Math Fun!</h2>
-                <p>An interactive web application for math education. Making mathematics engaging and accessible through interactive exercises, visualizations, and gamified learning experiences.</p>
-                <span style="color: #64748b; font-style: italic;">Coming soon...</span>
-            </div>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>RiskPrism</h3>
+                    <p>An open-source, Barra-style US equity factor risk model: 9 style factors, 30 industries,
+                       weekly-published exposures and covariances, a hosted API with no signup, and an MCP server
+                       so AI agents can use it out of the box.</p>
+                    <div class="tag-row">
+                        <span class="tag">Quant Finance</span><span class="tag">Python</span><span class="tag">MCP</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://risk-prism-production.up.railway.app" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/risk-prism" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
 
-            <div class="project">
-                <h2>AI Life Coach</h2>
-                <p>A personal AI-powered life coach that helps with personal development, goal setting, and navigating life's challenges. Features include chat persistence, Google Drive sync, and privacy-focused design.</p>
-                <a href="https://ai-coach-frontend.onrender.com">
-                    Try it out
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>AMM PvP Challenge</h3>
+                    <p>Player-vs-player automated market maker competition. Write a Solidity fee strategy,
+                       battle other players head-to-head in realistic Rust-powered simulations, and climb
+                       the leaderboard.</p>
+                    <div class="tag-row">
+                        <span class="tag">DeFi</span><span class="tag">Solidity</span><span class="tag">Rust</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://ammchallenge.com" target="_blank" rel="noopener">Compete ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/pvp_amm_challenge" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
 
-            <div class="project">
-                <h2>Racket Science</h2>
-                <p>Professional badminton and tennis services in Flushing, NY. Offering coaching, equipment recommendations, and court reservations for players of all skill levels.</p>
-                <a href="racket-science.html">
-                    Learn more
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>Mind Reader</h3>
+                    <p>A pattern-recognition game where a reinforcement-learning agent studies your choices
+                       and learns to predict your next move. See how long you can stay unpredictable.</p>
+                    <div class="tag-row">
+                        <span class="tag">Game</span><span class="tag">RL</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://mind-reader-production.up.railway.app" target="_blank" rel="noopener">Play ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/mind-reader" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
 
-            <div class="project">
-                <h2>Effective Hourly Wage Calculator</h2>
-                <p>An AI-powered calculator that measures the economic value of any activity using research-backed health economics, life extension valuations, and proper economic principles. Exercise, learning, social media - discover the true $/hour value!</p>
-                <a href="https://effective-wage-calculator.streamlit.app/" target="_blank">
-                    Try the Calculator
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <br><br>
-                <a href="https://github.com/wanxinwanxin/effective-wage-calculator" target="_blank" style="font-size: 0.9rem; opacity: 0.8;">
-                    View Source & Contribute →
-                </a>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>Rent vs. Buy Calculator</h3>
+                    <p>Full financial comparison of renting versus buying a home: monthly cash flows, NPV, IRR,
+                       and break-even analysis, with mortgage-interest and SALT-cap tax treatment and NYC/NJ
+                       regional defaults.</p>
+                    <div class="tag-row">
+                        <span class="tag">Personal Finance</span><span class="tag">Streamlit</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://rent-vs-buy-calculator.streamlit.app/" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/rent-vs-buy-calculator" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>Effective Hourly Wage Calculator</h3>
+                    <p>What is an hour of exercise, learning, or doomscrolling really worth? An AI-powered
+                       calculator that prices any activity in $/hour using research-backed health economics
+                       and life-extension valuations.</p>
+                    <div class="tag-row">
+                        <span class="tag">Economics</span><span class="tag">Streamlit</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://effective-wage-calculator.streamlit.app/" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/effective-wage-calculator" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>AI Life Coach</h3>
+                    <p>A personal AI-powered coach for goal setting and navigating life's challenges,
+                       with chat persistence, Google Drive sync, and a privacy-first design.</p>
+                    <div class="tag-row">
+                        <span class="tag">AI</span><span class="tag">Coaching</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://ai-coach-frontend.onrender.com" target="_blank" rel="noopener">Try it ↗</a>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>
+        </section>
+
+        <!-- Research tooling & open source -->
+        <section>
+            <p class="eyebrow">Open Source</p>
+            <h2 id="oss">Research Tooling &amp; Experiments</h2>
+            <ul class="row-list oss-list">
+                <li>
+                    <span class="row-when">amm-gym</span>
+                    <span class="row-what">
+                        <span class="role">RL environment for AMM market making</span>
+                        <span class="oss-desc">A Gymnasium-compatible environment where a learnable venue competes with a benchmark
+                        venue for retail flow while both are exposed to arbitrage. Built for RL and policy benchmarking.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/amm-gym" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="row-when">dca-simulation</span>
+                    <span class="row-what">
+                        <span class="role">Execution-algorithm simulation framework</span>
+                        <span class="oss-desc">Compare TWAP, Dutch auctions, and adaptive limit-order strategies under stochastic
+                        prices, linear impact, and EIP-1559 gas — reproducible, modular, YAML-configured.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/dca-simulation" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="row-when">opensolids</span>
+                    <span class="row-what">
+                        <span class="role">Science-based baby solids guide</span>
+                        <span class="oss-desc">Texture-precise guidance for 63 foods, adaptive daily plans, and allergy playbooks —
+                        every claim cited to CDC/NIAID/AAP/WHO sources and enforced by CI.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/baby-solids-guide" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="row-when">nn-tutorial</span>
+                    <span class="row-what">
+                        <span class="role">Interactive neural-network course</span>
+                        <span class="oss-desc">Six chapters from a single neuron to a full training loop, with Python you can run
+                        and edit in the browser via Pyodide and live matplotlib plots.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/nn-tutorial" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="row-when">math-fun</span>
+                    <span class="row-what">
+                        <span class="role">Math education app</span>
+                        <span class="oss-desc">Interactive exercises and gamified learning to make math engaging. In progress.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/math-fun" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Off the screen -->
+        <section>
+            <p class="eyebrow">Off the Screen</p>
+            <h2 id="irl">Racket Science</h2>
+            <div class="card-grid" style="grid-template-columns: minmax(240px, 480px);">
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Flushing, NY</span></p>
+                    <h3>Badminton &amp; Tennis Services</h3>
+                    <p>Coaching, stringing, equipment recommendations, and court reservations
+                       for players of all levels.</p>
+                    <div class="card-actions">
+                        <a class="btn" href="racket-science.html">Details ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <footer>
-        <p>Made with ❤️ by <a href="https://wanxinwanxin.github.io">Xin Wan</a></p>
+        <div class="footer-inner">
+            <span>© 2026 Xin Wan · New York</span>
+            <span><a href="index.html">← Back to main page</a></span>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
-</html> 
+
+</html>

@@ -1,323 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8"/>
     <title>Xin Wan</title>
-    <meta name="description" content="Xin Wan's personal website - Research Scientist at Uniswap Labs, focusing on blockchain economics and mechanism design"/>
-    <meta name="keywords" content="blockchain, economics, mechanism design, Uniswap, DeFi, research"/>
+    <meta name="description" content="Xin Wan — Staff Research Scientist and Head of Research & Data Science at Uniswap Labs. Market microstructure, mechanism design, and DeFi research."/>
+    <meta name="keywords" content="blockchain, economics, mechanism design, market microstructure, Uniswap, DeFi, research"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Xin Wan - Research Scientist"/>
-    <meta property="og:description" content="Research Scientist at Uniswap Labs, focusing on blockchain economics and mechanism design"/>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Xin Wan — Research, Markets, Mechanism Design"/>
+    <meta property="og:description" content="Staff Research Scientist and Head of Research & Data Science at Uniswap Labs."/>
     <meta property="og:image" content="headshot.jpeg"/>
     <meta property="og:url" content="https://wanxinwanxin.github.io"/>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6086b'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3Exw%3C/text%3E%3C/svg%3E"/>
+
+    <!-- Set theme before first paint -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Fonts & styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <ul class="nav-menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#engagement">Engagement</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#media">Media</a></li>
-            <li><a href="#talks">Talks</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="wordmark" href="#top">Xin Wan</a>
+            <nav class="topnav" aria-label="Sections">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="#talks" class="nav-optional">Talks</a>
+                <a href="#experience" class="nav-optional">Experience</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button>
+            </nav>
+        </div>
+    </header>
 
-    <h1>Welcome! </h1>
-    
-    <!-- Social Links -->
-    <p class="author social-links">
-        Xin Wan<br>
-        <a href="https://twitter.com/xin__wan">[Twitter]</a>
-        <a href="https://www.linkedin.com/in/xin-wan-a2220341/">[Linkedin]</a>
-        <a href="https://medium.com/@nflswanxin">[Medium]</a>
-        <a href="https://positivegradient.substack.com/">[Substack]</a>
-        <a href="https://github.com/wanxinwanxin">[Github]</a>
-        <a href="https://scholar.google.com/citations?user=S7m0fQQAAAAJ&hl=en">[Google Scholar]</a>
-        <a href="projects.html">[Personal Projects]</a><br>
-        Email: nflswanxin (at) gmail (dot) com <br>
-        Last Update: Dec 26, 2024
-    </p>
+    <main class="wrap" id="top">
 
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-grid">
+                <div>
+                    <p class="hero-eyebrow">Research · Markets · Mechanism Design</p>
+                    <h1>Xin Wan</h1>
+                    <p class="hero-title">Staff Research Scientist &amp; Head of Research and Data Science, <a href="https://uniswap.org">Uniswap Labs</a></p>
+                    <p class="hero-sub">I study how decentralized markets actually behave — liquidity, auctions, MEV — and help design the mechanisms that make them work better.</p>
+                    <ul class="social-row">
+                        <li><a href="https://twitter.com/xin__wan">Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/in/xin-wan-a2220341/">LinkedIn</a></li>
+                        <li><a href="https://github.com/wanxinwanxin">GitHub</a></li>
+                        <li><a href="https://scholar.google.com/citations?user=S7m0fQQAAAAJ&hl=en">Scholar</a></li>
+                        <li><a href="https://positivegradient.substack.com/">Substack</a></li>
+                        <li><a href="https://medium.com/@nflswanxin">Medium</a></li>
+                        <li><a href="mailto:nflswanxin@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+                <div class="hero-photo">
+                    <img src="headshot.jpeg" alt="Portrait of Xin Wan" loading="lazy"/>
+                </div>
+            </div>
 
-<div class="abstract">
-    <h2 id="about">Abstract</h2>
-    <p style="text-align: left; text-indent: 0.5in;">
-        I am a Research Scientist at Uniswap Labs.
-        My current research interests include empirical economics and protocol &amp; mechanism design.
-    </p>
-    <p style="margin-bottom: 1em;"></p>
-    <p style="text-align: left; text-indent: 0.5in;">
-        Prior to joining Uniswap Labs, I was a quantitative researcher at AQR Capital Management, with a focus on equity alpha signal research and portfolio risk modeling.
-        Before that, I was a structured product and derivatives trader at KGS Alpha Capital Markets (now BMO Capital Markets).
-    </p>
-    <p style="margin-bottom: 1em;"></p>
-    <p style="text-align: left; text-indent: 0.5in;">
-        I hold a Master's degree in Financial Mathematics from Princeton University and a dual degree in Mathematics and Economics from the University of Pennsylvania.
-    </p>
+            <dl class="board" aria-label="At a glance">
+                <div><dt>Publications</dt><dd>13</dd></div>
+                <div><dt>Citations</dt><dd>150+</dd></div>
+                <div><dt>Talks</dt><dd>12+</dd></div>
+                <div><dt>Apps live</dt><dd>6</dd></div>
+            </dl>
+        </div>
 
-    <!-- Add paragraph spacing -->
-    
-</div>
-<dis class="photo">
-<img src=headshot.jpeg loading="lazy" alt="Xin Wan's photo" width="400"/>
-</div>
+        <!-- About -->
+        <section id="about-section">
+            <p class="eyebrow">About</p>
+            <h2 id="about">Background</h2>
+            <div class="prose">
+                <p class="lede">
+                    I lead the Research and Data Science team at Uniswap Labs. My work sits at the
+                    intersection of empirical market microstructure, protocol economics, and mechanism
+                    design — from measuring the costs of swapping onchain to designing the auctions
+                    behind UniswapX, Unichain, and the Uniswap Liquidity Launchpad.
+                </p>
+                <p>
+                    Before crypto, I was a quantitative researcher at AQR Capital Management, focused on
+                    equity alpha signals and portfolio risk modeling, and before that a structured
+                    products and derivatives trader at KGS-Alpha Capital Markets (now BMO Capital Markets).
+                </p>
+                <p>
+                    I hold a Master in Finance from Princeton University and a dual degree in Mathematics
+                    and Economics (Wharton) from the University of Pennsylvania.
+                </p>
+            </div>
+            <div class="open-to">
+                <p>Open to:</p>
+                <ul>
+                    <li>Research collaboration — academic or industrial</li>
+                    <li>Advising companies and consulting on projects</li>
+                    <li>Guest lectures and speaking engagements</li>
+                </ul>
+                <p style="margin-top:0.6rem"><a href="#contact">Reach out →</a></p>
+            </div>
+        </section>
 
+        <!-- Research -->
+        <section id="research-section">
+            <p class="eyebrow">Research</p>
+            <h2 id="research">Papers &amp; Whitepapers</h2>
 
-
-<div class="Engagement">
-    <h2 id="engagement">Engagement</h2>
-    <p style="text-align:left;">
-        
-        <p>I am open to:</p>
-            <ul>
-                <li>Research (academic or industrial) collaboration</li>
-                <li>Advising companies / consulting on projects</li>
-                <li>Guest lecturing / speaking at events</li>
+            <p class="year-mark">2025</p>
+            <ul class="pub-list">
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://developers.uniswap.org/whitepaper_cca.pdf">Uniswap Liquidity Launchpad</a>
+                        <span class="pub-authors">Hayden Adams, Alex Karys, Dingyue Liu, Eric Zhong, Diana Kocsis, Mark Gretzke, <strong>Xin Wan</strong>, Mark Toda, Maddiaa0, Joe Andrews, Ciamac Moallemi</span>
+                    </span>
+                    <span class="pill hot">Whitepaper</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://moallemi.com/ciamac/papers/uniswap-pfda-2025.pdf">The Protocol Fee Discount Auction</a>
+                        <span class="pub-authors">Hayden Adams, Brad Bachu, Alex Nezlobin, Sara Reynolds, Dan Robinson, Mark Toda, <strong>Xin Wan</strong>, Zach Wong, Ciamac Moallemi</span>
+                    </span>
+                    <span class="pill hot">Whitepaper</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5152215">An Overview of Uniswap v4 for Researchers</a>
+                        <span class="pub-authors">Brad Bachu, Joel Hasbrouck, Fahad Saleh, <strong>Xin Wan</strong></span>
+                    </span>
+                    <span class="pill">SSRN</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://arxiv.org/abs/2410.19106">Quantifying the Value of Revert Protection</a>
+                        <span class="pub-authors">Brian Z. Zhu, <strong>Xin Wan</strong>, Ciamac C. Moallemi, Dan Robinson, Brad Bachu</span>
+                    </span>
+                    <span class="pill">FC '25</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://arxiv.org/abs/2410.19107">What Drives Liquidity on Decentralized Exchanges? Evidence from the Uniswap Protocol</a>
+                        <span class="pub-authors">Brian Z. Zhu, Dingyue Liu, <strong>Xin Wan</strong>, Gordon Liao, Ciamac C. Moallemi, Brad Bachu</span>
+                    </span>
+                    <span class="pill">FC '25</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://arxiv.org/abs/2405.00537">Quantifying Price Improvement in Order Flow Auctions</a>
+                        <span class="pub-authors">Brad Bachu, <strong>Xin Wan</strong>, Ciamac C. Moallemi</span>
+                    </span>
+                    <span class="pill">arXiv</span>
+                </li>
             </ul>
-            <p>Please <a href="#contact">reach out</a> if interested.</p>
-    </p>
-</div>
 
+            <p class="year-mark">2024</p>
+            <ul class="pub-list">
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://docs.unichain.org/whitepaper.pdf">Unichain</a>
+                        <span class="pub-authors">Hayden Adams, Mark Toda, Alex Karys, <strong>Xin Wan</strong>, Daniel Gretzke, Eric Zhong, Zach Wong, Daniel Marzec, Robert Miller, Hasu, Karl Floersch, Dan Robinson</span>
+                    </span>
+                    <span class="pill">Whitepaper</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://arxiv.org/abs/2309.13648">Don't Let MEV Slip: The Costs of Swapping on the Uniswap Protocol</a>
+                        <span class="pub-authors">Austin Adams, Benjamin Y. Chan, Sarit Markovich, <strong>Xin Wan</strong></span>
+                    </span>
+                    <span class="pill">FC '24</span>
+                </li>
+            </ul>
 
+            <p class="year-mark">2023</p>
+            <ul class="pub-list">
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://uniswap.org/whitepaper-uniswapx.pdf">UniswapX</a>
+                        <span class="pub-authors">Hayden Adams, Noah Zinsmeister, Mark Toda, Emily Williams, <strong>Xin Wan</strong>, Matteo Leibowitz, Will Pote, Allen Lin, Eric Zhong, Zhiyuan Yang, Riley Campbell, Alex Karys, Dan Robinson</span>
+                    </span>
+                    <span class="pill">Whitepaper</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://arxiv.org/abs/2306.09421">FLAIR: A Metric for Liquidity Provider Competitiveness in Automated Market Makers</a>
+                        <span class="pub-authors">Jason Milionis, <strong>Xin Wan</strong>, Austin Adams</span>
+                    </span>
+                    <span class="pill">arXiv</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4328948">On-Chain Foreign Exchange and Cross-Border Payments</a>
+                        <span class="pub-authors">Austin Adams, Mary-Catherine Lader, Gordon Liao, David Puth, <strong>Xin Wan</strong></span>
+                    </span>
+                    <span class="pill">CoDecFin '23</span>
+                </li>
+            </ul>
 
-<main>
-    <article>
-        <h2 id="research">Research</h2>
-        <!-- Working Projects -->
+            <p class="year-mark">2022</p>
+            <ul class="pub-list">
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4384409">Uniswap v3 TWAP Oracles in Proof of Stake</a>
+                        <span class="pub-authors">Austin Adams, <strong>Xin Wan</strong>, Noah Zinsmeister</span>
+                    </span>
+                    <span class="pill">FC '23 WS</span>
+                </li>
+                <li class="pub">
+                    <span class="pub-main">
+                        <a class="pub-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4382303">Just-In-Time Liquidity on the Uniswap Protocol</a>
+                        <span class="pub-authors"><strong>Xin Wan</strong>, Austin Adams</span>
+                    </span>
+                    <span class="pill">DuneCon '22</span>
+                </li>
+            </ul>
+        </section>
 
-        <!-- Published -->
-        <ul>
-            <li>
-                <a href="https://docs.unichain.org/whitepaper.pdf">Unichain </a><br>
-                <small> Hayden Adams, Mark Toda, Alex Karys, Xin Wan, Daniel Gretzke, Eric Zhong, Zach Wong, Daniel Marzec, Robert Miller, Hasu, Karl Floersch, Dan Robinson
-                </small>
-            </li>
-            
-            <li>
-                <a href="https://arxiv.org/abs/2410.19106">Quantifying the Value of Revert Protection </a><br>
-                <small><i>Accepted to Financial Cryptography and Data Security Conference 2025</i></small><br>
-                <small> Brian Z. Zhu, Xin Wan, Ciamac C. Moallemi, Dan Robinson, Brad Bachu
-                </small>
-            </li>
-            
-            <li>
-                <a href="https://arxiv.org/abs/2410.19107">What Drives Liquidity on Decentralized Exchanges? Evidence from the Uniswap Protocol </a><br>
-                <small> Brian Z. Zhu, Dingyue Liu, Xin Wan, Gordon Liao, Ciamac C. Moallemi, Brad Bachu
-                </small>
-            </li>
-            
-            <li>
-                <a href="https://arxiv.org/abs/2405.00537">Quantifying Price Improvement in Order Flow Auctions </a><br>
-                <small> Brad Bachu, Xin Wan, Ciamac C. Moallemi
-                </small>
-            </li>
-            
-            
-            
-            
-            <li>
-                <a href="https://arxiv.org/abs/2309.13648">Don't Let MEV Slip: The Costs of Swapping on the Uniswap Protocol </a><br>
-                <small><i>Accepted to Financial Cryptography and Data Security Conference 2024</i></small><br>
-                <small> Austin Adams, Benjamin Y Chan, Sarit Markovich, Xin Wan
-                </small>
-            </li>
-            
-            
-            <li>
-                <a href="https://uniswap.org/whitepaper-uniswapx.pdf">UniswapX </a><br>
-                <small>Hayden Adams, Noah Zinsmeister, Mark Toda, Emily Williams, Xin Wan, Matteo Leibowitz, Will Pote, 
-                    Allen Lin, Eric Zhong, Zhiyuan Yang, Riley Campbell, Alex Karys, Dan Robinson 
-                </small>
-            </li>
-            
-            <li>
-                <a href="https://arxiv.org/abs/2306.09421">FLAIR: A Metric for Liquidity Provider Competitiveness in Automated Market Makers </a><br>
-                <small>Jason Milionis, Xin Wan, Austin Adams</small>
-            </li>
+        <!-- Projects preview -->
+        <section id="projects-section">
+            <p class="eyebrow">Projects</p>
+            <h2 id="projects">Recently Shipped</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>RiskPrism</h3>
+                    <p>Open-source, Barra-style US equity factor risk model — 9 style factors, 30 industries, weekly artifacts, and an MCP server for AI agents.</p>
+                    <div class="card-actions">
+                        <a class="btn" href="https://risk-prism-production.up.railway.app" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/risk-prism" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>AMM PvP Challenge</h3>
+                    <p>Write an AMM fee strategy, battle other players head-to-head in realistic simulations, and climb the leaderboard.</p>
+                    <div class="card-actions">
+                        <a class="btn" href="https://ammchallenge.com" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/pvp_amm_challenge" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>Mind Reader</h3>
+                    <p>A pattern-recognition game where a reinforcement-learning agent learns to predict your next move. Try to stay unpredictable.</p>
+                    <div class="card-actions">
+                        <a class="btn" href="https://mind-reader-production.up.railway.app" target="_blank" rel="noopener">Play ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/mind-reader" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+            </div>
+            <p><a class="see-all" href="projects.html">All projects →</a></p>
+        </section>
 
-            <li>
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4328948">On-Chain Foreign Exchange and Cross-Border Payments </a><br>
-                <small><i>Presented at Workshop at CoDefFin'23</i></small><br>
-                <small>Austin Adams, Mary-Catherine Lader, Gordon Liao, David Puth, Xin Wan</small>
-            </li>
+        <!-- Talks -->
+        <section id="talks-section">
+            <p class="eyebrow">Speaking</p>
+            <h2 id="talks">Selected Talks</h2>
 
-            <li>
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4384409">Uniswap v3 TWAP Oracles in Proof of Stake </a><br>
-                <small><i>Presented at Workshop at FC'23</i></small><br>
-                <small>Austin Adams, Xin Wan, Noah Zinsmeister</small>
-            </li>
+            <p class="year-mark">2024</p>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">DuneCon 2024</span>
+                    <span class="row-what"><span class="role">The Evolution of Uniswap: From v1 to v4</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=B_V0dpxEFOU">Video ↗</a></span></span>
+                </li>
+                <li>
+                    <span class="row-when">FC 2024</span>
+                    <span class="row-what"><span class="role">The Costs of Swapping on the Uniswap Protocol</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=jugpUY56R4A">Video ↗</a></span></span>
+                </li>
+            </ul>
 
-            <li>
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4382303">Just-In-Time Liquidity on the Uniswap Protocol </a><br>
-                <small><i>Presented at DuneCon 2022</i></small><br>
-                <small>Xin Wan, Austin Adams</small>
-            </li>
+            <p class="year-mark">2023</p>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">DeFi Security Summit · Blockchain Oracle Summit</span>
+                    <span class="row-what"><span class="role">Economic Security of Onchain Oracles</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=VUImVj3Cm9A">Video ↗</a> <a href="https://www.youtube.com/watch?v=QbCMdsmE-IM">Video 2 ↗</a></span></span>
+                </li>
+                <li>
+                    <span class="row-when">Stable Summit</span>
+                    <span class="row-what"><span class="role">Facilitating On-chain FX and Cross-border Payments with Stablecoins</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=cht5gfdLefE">Video ↗</a></span></span>
+                </li>
+                <li>
+                    <span class="row-when">EthCC · CryptoEconDay Paris</span>
+                    <span class="row-what"><span class="role">Hyper Fragmented Liquidity, Fully Adversarial Mempool, Wat Do?</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=ZBh5DscGIlU">Short ↗</a> <a href="https://www.youtube.com/watch?v=4RLeTIZR5pI">Full ↗</a></span></span>
+                </li>
+                <li>
+                    <span class="row-when">DeFi Cafe Paris</span>
+                    <span class="row-what"><span class="role">Fifty Shades of MEV Mitigation</span> <span class="org">— lightning talk</span></span>
+                </li>
+                <li>
+                    <span class="row-when">CoDecFin '23</span>
+                    <span class="row-what"><span class="role">Onchain Foreign Exchange</span> <span class="org">— workshop</span></span>
+                </li>
+                <li>
+                    <span class="row-when">FC '23</span>
+                    <span class="row-what"><span class="role">TWAP Manipulation Under Ethereum PoS</span> <span class="org">— workshop</span></span>
+                </li>
+                <li>
+                    <span class="row-when">HK PolyU</span>
+                    <span class="row-what"><span class="role">Guest Lecture</span> <span class="org">— Prof. Daniel Luo's class</span></span>
+                </li>
+                <li>
+                    <span class="row-when">ETHDenver</span>
+                    <span class="row-what"><span class="role">Overview of Onchain Liquidity Provision</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=eCKKMVGaFYA">Video ↗</a></span></span>
+                </li>
+                <li>
+                    <span class="row-when">ETHDenver</span>
+                    <span class="row-what"><span class="role">Next Growthpole of DeFi</span> <span class="org">— panel</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=Ash-91MIKb0">Video ↗</a></span></span>
+                </li>
+            </ul>
 
-        </ul>
+            <p class="year-mark">2022</p>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">DuneCon 2022</span>
+                    <span class="row-what"><span class="role">Data Science on Uniswap v3 &amp; Just-in-Time Liquidity</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=fgh0WQb4mik">Video ↗</a></span></span>
+                </li>
+            </ul>
 
+            <h3>Media</h3>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">Uniswap Labs</span>
+                    <span class="row-what"><span class="role">Research Hour Series</span> <span class="org">— co-host</span> <span class="row-links"><a href="https://www.youtube.com/@uniswap-labs/streams">Watch ↗</a></span></span>
+                </li>
+                <li>
+                    <span class="row-when">Bell Curve</span>
+                    <span class="row-what"><span class="role">Podcast Episode on Order Flow Auctions</span> <span class="row-links"><a href="https://www.youtube.com/watch?v=5TSj_WIY5EU&t=1s">Listen ↗</a></span></span>
+                </li>
+            </ul>
+        </section>
 
+        <!-- Service -->
+        <section id="service-section">
+            <p class="eyebrow">Community</p>
+            <h2 id="services">Positions &amp; Service</h2>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">2025</span>
+                    <span class="row-what"><span class="role">Co-organizer</span> <span class="org">— Economics of Liquidity Provision, with CBER and the Columbia Center for Digital Finance</span></span>
+                </li>
+                <li>
+                    <span class="row-when">2024</span>
+                    <span class="row-what"><span class="role">Advisory Committee</span> <span class="org">— Design of Blockchain-Enabled Markets Conference</span></span>
+                </li>
+                <li>
+                    <span class="row-when">2024</span>
+                    <span class="row-what"><span class="role">Program Committee Chair</span> <span class="org">— The Latest on DeFi Research (TLDR)</span></span>
+                </li>
+                <li>
+                    <span class="row-when">2023</span>
+                    <span class="row-what"><span class="role">Program Committee</span> <span class="org">— ACM CCS Workshop on Decentralized Finance and Security</span></span>
+                </li>
+                <li>
+                    <span class="row-when">2023</span>
+                    <span class="row-what"><span class="role">Judge</span> <span class="org">— ETHGlobal Paris Hackathon</span></span>
+                </li>
+            </ul>
+        </section>
 
-        <h2 id="services">Positions & Services</h2>
-        <ul>
-            <li>Advisory Committee @ Design of Blockchain-Enabled Markets Conference, 2024</li>
-            <li>Program Committee Chair @ The Latest on DeFi Research (TLDR), 2024</li>
-            <li>Program Committee @ ACM CCS Workshop on Decentralized Finance and Security, 2023</li>
-            <li>Judge @ ETHGlobal Paris Hackathon (July 21 - 23, 2023)</li>
-        </ul>
+        <!-- Experience -->
+        <section id="experience-section">
+            <p class="eyebrow">Career</p>
+            <h2 id="experience">Experience</h2>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">Dec 2021 — Present</span>
+                    <span class="row-what"><span class="role">Staff Research Scientist, Head of Research and Data Science</span> <span class="org">— Uniswap Labs</span></span>
+                </li>
+                <li>
+                    <span class="row-when">Jun 2019 — Dec 2021</span>
+                    <span class="row-what"><span class="role">Quantitative Researcher</span> <span class="org">— AQR Capital Management</span></span>
+                </li>
+                <li>
+                    <span class="row-when">Aug 2015 — Jun 2018</span>
+                    <span class="row-what"><span class="role">Trader</span> <span class="org">— KGS-Alpha Capital Markets (now BMO Capital Markets)</span></span>
+                </li>
+            </ul>
 
-        <h2 id="media">Media</h2>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/@uniswap-labs/streams">Research Hour Series By Uniswap Labs </a><br>
-            </li>
-        </ul>
+            <h3 id="education">Education</h3>
+            <ul class="row-list">
+                <li>
+                    <span class="row-when">2018 — 2020</span>
+                    <span class="row-what"><span class="role">Master in Finance</span> <span class="org">— Princeton University</span></span>
+                </li>
+                <li>
+                    <span class="row-when">2011 — 2015</span>
+                    <span class="row-what"><span class="role">B.A. Mathematics &amp; B.S. Economics (Wharton)</span> <span class="org">— University of Pennsylvania</span></span>
+                </li>
+            </ul>
+        </section>
 
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/watch?v=5TSj_WIY5EU&t=1s">Bell Curve Episode On Order Flow Auctions </a><br>
-            </li>
-        </ul>
-        
+        <!-- Contact -->
+        <section id="contact-section">
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact">Get in Touch</h2>
+            <div class="contact-card">
+                <form action="https://formspree.io/f/xeooaqob" method="POST">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="message" placeholder="What's on your mind?" rows="4" required></textarea>
+                    <button type="submit" class="btn">Send message</button>
+                </form>
+                <p class="contact-note">Or email directly: nflswanxin (at) gmail (dot) com</p>
+            </div>
+        </section>
 
-
-
-        <h2 id="talks">Selected Talks</h2>
-        
-        <p>2024</p>
-        <ul>
-            <li>
-                The Evolution of Uniswap: From v1 to v4 <br>
-                @ DuneCon 2024 <a href="https://www.youtube.com/watch?v=B_V0dpxEFOU">[Youtube video]</a><br>
-            </li>
-            
-            <li>
-                The Costs of Swapping on the Uniswap Protocol <br>
-                @ Financial Cryptography and Data Security Conference 2024 <a href="https://www.youtube.com/watch?v=jugpUY56R4A">[Youtube video]</a><br>
-            </li>
-        </ul>
-        <p>2023</p>
-        <ul>
-
-        
-            <li>
-                Economic Security of Onchain Oracles <br>
-                @ DeFi Security Summit 2023 <a href="https://www.youtube.com/watch?v=VUImVj3Cm9A">[Youtube video]</a><br>
-                @ Blockchain Oracle Summit 2023 <a href="https://www.youtube.com/watch?v=QbCMdsmE-IM">[Youtube video]</a><br>
-            </li>
-
-            <li>
-                Facilitating On-chain FX and Cross-border Payments with Stablecoins @ Stable Summit 2023 <br>
-                <a href="https://www.youtube.com/watch?v=cht5gfdLefE">[Youtube video]</a>
-            </li>
-
-            <li>
-                Hyper Fragmented Liquidity, Fully Adversarial Mempool, Wat Do? <br> 
-                @ Ethereum Community Conference 2023 <a href="https://www.youtube.com/watch?v=ZBh5DscGIlU">[Youtube video (shortened)]</a><br> 
-                @ CryptoEconDay Paris 2023 <a href="https://www.youtube.com/watch?v=4RLeTIZR5pI">[Youtube video (full)]</a> <br> 
-            </li>
-
-            <li>
-                Fifty Shades of MEV Mitigation (Lightning talk) @ DeFi Cafe Paris 2023 <br>
-            </li>
-
-            <li>
-                Onchain Foreign Exchange Workshop @ CoDecFin'23<br>
-            </li>
-            <li>
-                TWAP manipulation under Ethereum POS Workshop @ FC'23<br>
-            </li>
-            <li>
-                Guest Lecture @ HK PolyU (Prof. Daniel Luo's class)
-            </li>
-            <li>
-                Overview of Onchain Liquidity Provision @ ETH Denver<br>
-                <a href="https://www.youtube.com/watch?v=eCKKMVGaFYA">[Youtube video]</a>
-            </li>
-            <li>
-                Next Growthpole of DeFi (Panel Discussion) @ ETH Denver<br>
-                <a href="https://www.youtube.com/watch?v=Ash-91MIKb0">[Youtube video]</a>
-            </li>
-        </ul>
-        <p>2022</p>
-        <ul>
-            <li>
-                Data Science On Uniswap v3 & Just-in-time Liquidity @ DuneCon 2022<br>
-                <a href="https://www.youtube.com/watch?v=fgh0WQb4mik">[Youtube video]</a>
-            </li>
-        </ul>
-        <h2 id="experience">Professional Experiences</h2>
-
-        <ul>
-            <li>
-                Dec 2021 - Current - Research Scientist @ Uniswap Labs   <br>
-            </li>
-            <li>
-                Jul 202 - Dec 2021 - Quantitative Researcher @ AQR Capital Management
-            </li>
-            <li>
-                Jul 2015 - Jun 2018 - Trader @ KGS Alpha Capital Markets
-            </li>
-
-        </ul>
-
-        <h2 id="education">Education</h2>
-        <ul>
-            <li>
-                Sep 2018 - Jun 2020 <br>
-                Master in Financial Mathematics <br>
-                Princeton University
-            </li>
-            <li>
-                Sep 2011 ~ May 2015 <br>
-                B.A. in Mathematics (School of Arts & Sciences) <br>
-                B.S. in Economics (Wharton School of Business) <br>
-                University of Pennsylvania
-            </li>
-
-        </ul>
-    </article>
-</main>
-
-    <!-- Contact Form Section -->
-    <div id="contact" class="contact-form">
-        <h2>Contact Me</h2>
-        <form action="https://formspree.io/f/xeooaqob" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</button>
-
-    <hr>
+    </main>
 
     <footer>
-        <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a> and <a href="https://chat.openai.com">ChatGPT</a>
-            &#10084; &#10084;</p>
-        <p>Forked from <a href="https://lzhou1110.github.io/">Liyi Zhou's website</a></p>
+        <div class="footer-inner">
+            <span>© 2026 Xin Wan · New York</span>
+            <span>Updated Aug 2026 · Built with <a href="https://claude.com/claude-code">Claude Code</a></span>
+        </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 
