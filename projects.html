@@ -7,7 +7,7 @@
     <meta name="description" content="Apps, games, and research tooling built by Xin Wan — live, open source, and usable today."/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6086b'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3Exw%3C/text%3E%3C/svg%3E"/>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314181f'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3Exw%3C/text%3E%3C/svg%3E"/>
 
     <!-- Set theme before first paint -->
     <script>
@@ -101,16 +101,43 @@
 
                 <div class="card">
                     <p class="card-status"><span><span class="dot live"></span>Live</span></p>
-                    <h3>Rent vs. Buy Calculator</h3>
-                    <p>Full financial comparison of renting versus buying a home: monthly cash flows, NPV, IRR,
-                       and break-even analysis, with mortgage-interest and SALT-cap tax treatment and NYC/NJ
-                       regional defaults.</p>
+                    <h3>Parallel Lives</h3>
+                    <p>Rent vs. buy, played out. The night you sign, a second version of you signs the
+                       other contract — watch Renter You and Owner You race across the years,
+                       a thousand times over.</p>
                     <div class="tag-row">
-                        <span class="tag">Personal Finance</span><span class="tag">Streamlit</span>
+                        <span class="tag">Personal Finance</span><span class="tag">Simulation</span>
                     </div>
                     <div class="card-actions">
-                        <a class="btn" href="https://rent-vs-buy-calculator.streamlit.app/" target="_blank" rel="noopener">Launch ↗</a>
-                        <a class="quiet-link" href="https://github.com/wanxinwanxin/rent-vs-buy-calculator" target="_blank" rel="noopener">Source</a>
+                        <a class="btn" href="https://parallel-lives-production.up.railway.app" target="_blank" rel="noopener">Launch ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>OpenSolids</h3>
+                    <p>A free, science-based guide for starting your baby on solid foods: exact safe
+                       textures for every food, daily recommendations that adapt to your baby, and
+                       allergy playbooks grounded in NIAID and AAP guidance.</p>
+                    <div class="tag-row">
+                        <span class="tag">Parenting</span><span class="tag">Next.js</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://baby-solids-guide-production.up.railway.app/today" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/baby-solids-guide" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>When Do I Turn Green?</h3>
+                    <p>An explainable view of the U.S. employment-based green card queue: what the
+                       published dates mean, where the demand sits, and what is observed versus inferred.</p>
+                    <div class="tag-row">
+                        <span class="tag">Immigration</span><span class="tag">Data Viz</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://when-do-i-turn-green.up.railway.app/" target="_blank" rel="noopener">Launch ↗</a>
                     </div>
                 </div>
 
@@ -151,47 +178,12 @@
             <h2 id="oss">Research Tooling &amp; Experiments</h2>
             <ul class="row-list oss-list">
                 <li>
-                    <span class="row-when">amm-gym</span>
-                    <span class="row-what">
-                        <span class="role">RL environment for AMM market making</span>
-                        <span class="oss-desc">A Gymnasium-compatible environment where a learnable venue competes with a benchmark
-                        venue for retail flow while both are exposed to arbitrage. Built for RL and policy benchmarking.</span>
-                        <span class="row-links"><a href="https://github.com/wanxinwanxin/amm-gym" target="_blank" rel="noopener">GitHub ↗</a></span>
-                    </span>
-                </li>
-                <li>
-                    <span class="row-when">dca-simulation</span>
-                    <span class="row-what">
-                        <span class="role">Execution-algorithm simulation framework</span>
-                        <span class="oss-desc">Compare TWAP, Dutch auctions, and adaptive limit-order strategies under stochastic
-                        prices, linear impact, and EIP-1559 gas — reproducible, modular, YAML-configured.</span>
-                        <span class="row-links"><a href="https://github.com/wanxinwanxin/dca-simulation" target="_blank" rel="noopener">GitHub ↗</a></span>
-                    </span>
-                </li>
-                <li>
-                    <span class="row-when">opensolids</span>
-                    <span class="row-what">
-                        <span class="role">Science-based baby solids guide</span>
-                        <span class="oss-desc">Texture-precise guidance for 63 foods, adaptive daily plans, and allergy playbooks —
-                        every claim cited to CDC/NIAID/AAP/WHO sources and enforced by CI.</span>
-                        <span class="row-links"><a href="https://github.com/wanxinwanxin/baby-solids-guide" target="_blank" rel="noopener">GitHub ↗</a></span>
-                    </span>
-                </li>
-                <li>
                     <span class="row-when">nn-tutorial</span>
                     <span class="row-what">
                         <span class="role">Interactive neural-network course</span>
                         <span class="oss-desc">Six chapters from a single neuron to a full training loop, with Python you can run
                         and edit in the browser via Pyodide and live matplotlib plots.</span>
                         <span class="row-links"><a href="https://github.com/wanxinwanxin/nn-tutorial" target="_blank" rel="noopener">GitHub ↗</a></span>
-                    </span>
-                </li>
-                <li>
-                    <span class="row-when">math-fun</span>
-                    <span class="row-what">
-                        <span class="role">Math education app</span>
-                        <span class="oss-desc">Interactive exercises and gamified learning to make math engaging. In progress.</span>
-                        <span class="row-links"><a href="https://github.com/wanxinwanxin/math-fun" target="_blank" rel="noopener">GitHub ↗</a></span>
                     </span>
                 </li>
             </ul>
