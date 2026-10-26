@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Gallery — Xin Wan</title>
+    <meta name="description" content="Thirteen Rooms: animated, sonified visualizations of underused public data sets, each room in its own visual style."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta property="og:title" content="Thirteen Rooms — a data gallery by Xin Wan"/>
+    <meta property="og:description" content="Thirteen public data sets turned into motion and sound. Each room has its own visual language."/>
+    <meta property="og:url" content="https://wanxinwanxin.github.io/gallery/"/>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314181f'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3Exw%3C/text%3E%3C/svg%3E"/>
+
+    <!-- Set theme before first paint -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Gallery page. The site shell stays, the room cards are doorways with the room's own still inside. */
+        .wrap.gallery-wrap { max-width: 1100px; }
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 0.4rem 0 1.5rem;
+        }
+        a.room {
+            display: flex;
+            flex-direction: column;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            min-width: 0;
+            position: relative;
+            transition: transform 0.18s ease, border-color 0.18s ease;
+        }
+        a.room:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+        a.room:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .room-thumb { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #1b1f26; border-bottom: 1px solid var(--line); }
+        .room-num {
+            position: absolute; top: 0.6rem; left: 0.6rem;
+            font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+            background: rgba(20, 24, 31, 0.78); color: #fff; padding: 0.18rem 0.45rem; border-radius: 4px;
+            font-variant-numeric: tabular-nums;
+        }
+        .room-meta { padding: 1rem 1.1rem 1.1rem; display: flex; flex-direction: column; gap: 0.35rem; flex-grow: 1; }
+        .room-meta h3 { margin: 0; font-size: 1.1rem; }
+        .room-meta p { margin: 0; color: var(--muted); font-size: 0.88rem; flex-grow: 1; }
+        .room-style { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+        .room-style::before { content: "Style · "; }
+        .how { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); margin: 0 0 1.2rem; }
+        .how code { font-family: inherit; background: var(--accent-tint); padding: 0.08rem 0.35rem; border-radius: 4px; }
+        @media (prefers-reduced-motion: reduce) { a.room { transition: none; } }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="wordmark" href="../index.html">Xin Wan</a>
+            <nav class="topnav" aria-label="Sections">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#research">Research</a>
+                <a href="../projects.html">Projects</a>
+                <a href="./" aria-current="page">Gallery</a>
+                <a href="../index.html#contact">Contact</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap gallery-wrap">
+
+        <div class="page-hero">
+            <p class="hero-eyebrow">Public Data · Motion · Sound</p>
+            <h1>Thirteen Rooms</h1>
+            <p>Each room takes one public data set that was easy to find and hard to use, and turns it into
+               motion and sound. Thirteen agents built the thirteen rooms in parallel in one afternoon, from
+               the data pull to the sound design. Every room has its own visual language, from a radar scope
+               to a nautical chart.</p>
+        </div>
+
+        <section>
+            <p class="eyebrow">How to visit</p>
+            <p class="how">Open a room, then click once to <code>Enter with sound</code>. The chip at the bottom left
+               of every room moves to the next room and mutes the sound. Each room links to a README with the
+               source, the sampling rule, and the sound mapping. Source code lives on
+               <a href="https://github.com/wanxinwanxin/wanxinwanxin.github.io/tree/main/gallery" target="_blank" rel="noopener">GitHub</a>.</p>
+            <div class="room-grid" id="rooms"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span>© 2026 Xin Wan · New York</span>
+            <span><a href="../index.html">← Back to main page</a></span>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        fetch('rooms.json').then(function (r) { return r.json(); }).then(function (rooms) {
+            var grid = document.getElementById('rooms');
+            rooms.forEach(function (room, i) {
+                var a = document.createElement('a');
+                a.className = 'room';
+                a.href = 'rooms/' + room.slug + '/index.html';
+                a.innerHTML =
+                    '<img class="room-thumb" src="rooms/' + room.slug + '/preview.svg" alt="" loading="lazy">' +
+                    '<span class="room-num">ROOM ' + String(i + 1).padStart(2, '0') + '</span>' +
+                    '<div class="room-meta"><h3>' + room.title + '</h3><p>' + room.idea + '</p>' +
+                    '<span class="room-style">' + room.style.split(':')[0] + '</span></div>';
+                grid.appendChild(a);
+            });
+        }).catch(function () {
+            document.getElementById('rooms').textContent = 'The room list did not load.';
+        });
+    </script>
+</body>
+
+</html>
