@@ -55,6 +55,43 @@
             <p class="eyebrow">Storefront</p>
             <h2 id="live">Live Apps</h2>
             <div class="card-grid">
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>Thirteen Rooms</h3>
+                    <p>Thirteen underused public data sets — grid power flows, ship tracks, bird migration on weather radar, Supreme Court citations, the nearest 330,000 stars — each turned into an animated, sonified room in its own visual style. Thirteen agents built them in parallel in one afternoon.</p>
+                    <div class="tag-row">
+                        <span class="tag">Data Viz</span><span class="tag">Web Audio</span><span class="tag">Agents</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="gallery/">Enter ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/wanxinwanxin.github.io/tree/main/gallery" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>Basis</h3>
+                    <p>A leaderboard of tax-aware investment products — exchange funds, tax-aware long/short, direct indexing, and §351 ETF conversions — ranked on assets, fees, tracking error, and minimums, with the advisors and platforms that give access, and a calculator that routes a portfolio across the strategies.</p>
+                    <div class="tag-row">
+                        <span class="tag">Wealth Management</span><span class="tag">Next.js</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://web-production-6f270.up.railway.app" target="_blank" rel="noopener">Launch ↗</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <h3>TeachMe</h3>
+                    <p>Type a concept and get a narrated, 3Blue1Brown-style explainer video, built end to end by a pipeline of agents that research, storyboard, narrate, animate in Manim, and critique their own frames before you see them.</p>
+                    <div class="tag-row">
+                        <span class="tag">AI</span><span class="tag">Video</span><span class="tag">Python</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn" href="https://teach-me-production.up.railway.app" target="_blank" rel="noopener">Launch ↗</a>
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/teach-me" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
 
                 <div class="card">
                     <p class="card-status"><span><span class="dot live"></span>Live</span></p>
@@ -72,7 +109,7 @@
                 </div>
 
                 <div class="card">
-                    <p class="card-status"><span><span class="dot live"></span>Live</span></p>
+                    <p class="card-status"><span><span class="dot wip"></span>Offline · Source only</span></p>
                     <h3>AMM PvP Challenge</h3>
                     <p>Player-vs-player automated market maker competition. Write a Solidity fee strategy,
                        battle other players head-to-head in realistic Rust-powered simulations, and climb
@@ -81,7 +118,6 @@
                         <span class="tag">DeFi</span><span class="tag">Solidity</span><span class="tag">Rust</span>
                     </div>
                     <div class="card-actions">
-                        <a class="btn" href="https://ammchallenge.com" target="_blank" rel="noopener">Compete ↗</a>
                         <a class="quiet-link" href="https://github.com/wanxinwanxin/pvp_amm_challenge" target="_blank" rel="noopener">Source</a>
                     </div>
                 </div>
@@ -169,6 +205,29 @@
                         <a class="btn" href="https://ai-coach-frontend.onrender.com" target="_blank" rel="noopener">Try it ↗</a>
                     </div>
                 </div>
+                <div class="card">
+                    <p class="card-status"><span><span class="dot live"></span>Open Source · Self-hosted</span></p>
+                    <h3>Personal Finance Hub</h3>
+                    <p>A self-hosted personal finance dashboard: Plaid and direct connectors for banks, brokerages, and cards, on-chain balances by address, passkey login, and one SQLite file per household. Bring your own keys, keep your own data.</p>
+                    <div class="tag-row">
+                        <span class="tag">Personal Finance</span><span class="tag">Plaid</span><span class="tag">Next.js</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="quiet-link" href="https://github.com/wanxinwanxin/finance-hub" target="_blank" rel="noopener">Source</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-status"><span><span class="dot wip"></span>In progress</span></p>
+                    <h3>Fundamental Stock Analyst</h3>
+                    <p>An AI equity research firm in a box. An analyst screens SEC EDGAR fundamentals and writes an investment-committee memo, a second model argues back, an independent referee checks the merit, and every call lands in a dated track record that nobody can edit. One public call a day once it goes live.</p>
+                    <div class="tag-row">
+                        <span class="tag">Equity Research</span><span class="tag">Agents</span>
+                    </div>
+                    <div class="card-actions">
+                        
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -178,6 +237,22 @@
             <p class="eyebrow">Open Source</p>
             <h2 id="oss">Research Tooling &amp; Experiments</h2>
             <ul class="row-list oss-list">
+                <li>
+                    <span class="row-when">amm-gym</span>
+                    <span class="row-what">
+                        <span class="role">Gymnasium environment for AMM market making</span>
+                        <span class="oss-desc">A learnable fee-ladder venue competes with a constant-product benchmark for retail flow while arbitrageurs hit both. Built for RL and policy benchmarking, with an auto-research fork.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/amm-gym" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="row-when">ts-pretraining-transfer</span>
+                    <span class="row-what">
+                        <span class="role">Pretraining transfer for time series</span>
+                        <span class="oss-desc">Notebooks on neural nets and transformers for time series modeling and prediction.</span>
+                        <span class="row-links"><a href="https://github.com/wanxinwanxin/ts-pretraining-transfer" target="_blank" rel="noopener">GitHub ↗</a></span>
+                    </span>
+                </li>
                 <li>
                     <span class="row-when">nn-tutorial</span>
                     <span class="row-what">
